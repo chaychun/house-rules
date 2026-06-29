@@ -1,0 +1,114 @@
+/*
+ * house-rules doc theme.
+ * init adapts these variables to the repo's styling (colors, fonts, tokens).
+ * Everything below the :root block is structural — usually leave it alone.
+ */
+:root {
+  --hr-bg: #0f1115;
+  --hr-surface: #161922;
+  --hr-text: #e6e8ee;
+  --hr-muted: #9aa1b1;
+  --hr-accent: #7aa2f7;
+  --hr-border: #262a35;
+  --hr-radius: 8px;
+  --hr-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --hr-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --hr-maxw: 820px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--hr-bg);
+  color: var(--hr-text);
+  font-family: var(--hr-font);
+  line-height: 1.6;
+}
+
+.hr-layout { display: flex; min-height: 100vh; }
+
+.hr-sidebar {
+  width: 260px;
+  flex: 0 0 260px;
+  border-right: 1px solid var(--hr-border);
+  background: var(--hr-surface);
+  padding: 1.25rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.hr-main {
+  flex: 1;
+  padding: 2.5rem 2rem;
+  max-width: var(--hr-maxw);
+  margin: 0 auto;
+}
+
+/* Nav */
+.hr-nav__home {
+  display: block;
+  font-weight: 600;
+  color: var(--hr-text);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+.hr-nav__group { margin-bottom: 1rem; }
+.hr-nav__group-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hr-muted);
+  margin-bottom: 0.35rem;
+}
+.hr-nav ul { list-style: none; margin: 0; padding: 0; }
+.hr-nav li { margin: 0.15rem 0; }
+.hr-nav a {
+  color: var(--hr-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.hr-nav a:hover { color: var(--hr-text); }
+.hr-nav a.is-active { color: var(--hr-accent); font-weight: 600; }
+
+/* Doc header */
+.hr-doc-header { border-bottom: 1px solid var(--hr-border); margin-bottom: 2rem; }
+.hr-doc-header h1 { margin: 0 0 0.25rem; }
+.hr-doc-meta { color: var(--hr-muted); font-size: 0.85rem; display: flex; gap: 0.75rem; }
+.hr-badge {
+  background: var(--hr-accent);
+  color: #0b0d12;
+  border-radius: 999px;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Prose */
+.hr-prose { font-size: 1rem; }
+.hr-prose a { color: var(--hr-accent); }
+.hr-prose h2 { margin-top: 2.25rem; }
+.hr-prose code {
+  font-family: var(--hr-mono);
+  background: var(--hr-surface);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+.hr-prose pre {
+  background: var(--hr-surface) !important;
+  border: 1px solid var(--hr-border);
+  border-radius: var(--hr-radius);
+  padding: 1rem;
+  overflow-x: auto;
+}
+.hr-prose pre code { background: none; padding: 0; }
+.hr-prose table { border-collapse: collapse; width: 100%; }
+.hr-prose th, .hr-prose td {
+  border: 1px solid var(--hr-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.hr-prose pre.mermaid { background: transparent !important; border: none; text-align: center; }

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Injects house-rules bootstrap context every session (startup/resume/clear/compact).
+# Prints loop map + skill guidance (bootstrap.md) and the persona (persona.md) to
+# stdout; Claude Code injects it as hidden system context before the first response.
+set -euo pipefail
+
+ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
+
+echo "<house-rules>"
+cat "$ROOT/hooks/bootstrap.md"
+echo ""
+echo "--- persona.md ---"
+cat "$ROOT/persona.md"
+echo "</house-rules>"

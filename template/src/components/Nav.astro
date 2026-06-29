@@ -1,0 +1,40 @@
+---
+// Navigation shell — auto-derived from the content tree. Groups docs by their
+// top-level folder (a piece), so the user can switch between docs easily.
+import { getCollection } from 'astro:content';
+
+const docs = await getCollection('docs');
+
+const groups = new Map();
+for (const entry of docs) {
+  const parts = entry.id.split('/');
+  const group = parts.length > 1 ? parts[0] : '·';
+  if (!groups.has(group)) groups.set(group, []);
+  groups.get(group).push(entry);
+}
+const sorted = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+const current = Astro.url.pathname.replace(/^\/|\/$/g, '');
+---
+
+<nav class="hr-nav">
+  <a class="hr-nav__home" href="/">house-rules docs</a>
+  {sorted.map(([group, entries]) => (
+    <div class="hr-nav__group">
+      <div class="hr-nav__group-title">{group}</div>
+      <ul>
+        {entries
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map((entry) => (
+            <li>
+              <a
+                href={`/${entry.id}`}
+                class={current === entry.id ? 'is-active' : ''}
+              >
+                {entry.data.title ?? entry.id}
+              </a>
+            </li>
+          ))}
+      </ul>
+    </div>
+  ))}
+</nav>
