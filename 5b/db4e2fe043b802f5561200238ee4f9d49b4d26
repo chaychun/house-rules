@@ -1,0 +1,74 @@
+template/astro.config.mjs
+  s_2a1c3aa618434f::t_dcd3568d7e26dd 1-30
+template/src/pages/index.astro
+  s_2a1c3aa618434f::t_e43211d3802455 1-20
+template/src/content/welcome.mdx
+  s_2a1c3aa618434f::t_307fec229509a6 1-35
+hooks/bootstrap.md
+  s_2a1c3aa618434f::t_afb2facaaaaccc 4-10
+  s_2a1c3aa618434f::t_fc9009e1fc011a 1-3,11-13,15
+  s_2a1c3aa618434f::t_a5748c49424e03 14
+template/src/styles/theme.css
+  s_2a1c3aa618434f::t_868a0f27e2b18b 1-114
+skills/debug/reference/defense-in-depth.md
+  s_2a1c3aa618434f::t_d45ffd216e15f2 1-17
+skills/explore/SKILL.md
+  s_2a1c3aa618434f::t_bee5e24d611450 1-44
+.claude-plugin/plugin.json
+  s_2a1c3aa618434f::t_839a7cf60f0d5e 1-20
+template/src/components/Nav.astro
+  s_2a1c3aa618434f::t_d725348403f1aa 1-40
+skills/template/SKILL.md
+  s_2a1c3aa618434f::t_a83555c28d490f 1-42
+template/package.json
+  s_2a1c3aa618434f::t_6e6c71209473b9 1-18
+persona.md
+  s_2a1c3aa618434f::t_5d2d7c2f21b099 1-47
+skills/debug/reference/condition-waiting.md
+  s_2a1c3aa618434f::t_923549d1b71072 1-15
+skills/brainstorm/SKILL.md
+  s_2a1c3aa618434f::t_58772527cd6438 1-53
+skills/implement/SKILL.md
+  s_2a1c3aa618434f::t_f0e76b4673ee41 1-40
+template/src/pages/[...slug].astro
+  s_2a1c3aa618434f::t_e4029951a56df1 1-19
+template/src/content.config.ts
+  s_2a1c3aa618434f::t_c6beef66785f33 1-10,17-21
+  s_2a1c3aa618434f::t_6d2b67fbe678ba 11-16
+skills/debug/SKILL.md
+  s_2a1c3aa618434f::t_93b6587951649a 1-40
+hooks/session-start
+  s_2a1c3aa618434f::t_273685228de91c 1-14
+skills/debug/reference/root-cause-tracing.md
+  s_2a1c3aa618434f::t_81ef99d461b112 1-19
+skills/implement/reference/direct.md
+  s_2a1c3aa618434f::t_14b13a7f6636fa 1-14
+template/tsconfig.json
+  s_2a1c3aa618434f::t_4acb8d1f4add28 1-5
+template/src/layouts/Doc.astro
+  s_2a1c3aa618434f::t_c8b1c9e35d37e1 1-43
+skills/implement/reference/tdd.md
+  s_2a1c3aa618434f::t_6c353d01be8134 1-16
+skills/plan/SKILL.md
+  s_2a1c3aa618434f::t_0c1d6abd4d7799 1-59
+skills/init/SKILL.md
+  s_2a1c3aa618434f::t_7e56f62db04dcf 1-55
+template/.gitignore
+  s_2a1c3aa618434f::t_3bc5ce7c8d27da 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "5bdb4e2fe043b802f5561200238ee4f9d49b4d26",
+  "prompts": {},
+  "sessions": {
+    "s_2a1c3aa618434f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "96fffcb9-6a0e-4d0c-8da9-4683aeace1bc",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
