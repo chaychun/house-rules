@@ -1,0 +1,14 @@
+{
+  "name": "house-rules",
+  "description": "A lean brainstorm-plan-build loop for Claude Code, with a bundled terse persona and human-facing HTML docs.",
+  "owner": {
+    "name": "Chayut"
+  },
+  "plugins": [
+    {
+      "name": "house-rules",
+      "source": "./",
+      "description": "A lean brainstorm-plan-build loop for Claude Code, with a bundled terse persona and human-facing HTML docs."
+    }
+  ]
+}
