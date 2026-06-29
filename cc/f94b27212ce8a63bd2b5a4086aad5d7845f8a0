@@ -1,0 +1,47 @@
+README.md
+  s_45cab4d7d266d8::t_28a566143a7b1e 10-13
+  s_0d912ef93634ca::t_d1bb656e9b9eb3 37-38,40-42
+  s_0d912ef93634ca::t_590359198e368d 57-58
+  s_0d912ef93634ca::t_930da0e6e8c92b 66-68
+  s_2a1c3aa618434f::t_0af8574fa919b7 2-8,16-36,39,43-56,59-65
+  s_2a1c3aa618434f::t_dbd7ac3134289f 1
+.claude-plugin/plugin.json
+  s_0d912ef93634ca::t_9ca8726d799a23 5-7
+LICENSE
+  s_2a1c3aa618434f::t_c0af095fa1647f 1-21
+.claude-plugin/marketplace.json
+  s_0d912ef93634ca::t_af2efb43cb5867 1-2,4-14
+  s_0d912ef93634ca::t_56bc67a7b25e4c 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "ccf94b27212ce8a63bd2b5a4086aad5d7845f8a0",
+  "prompts": {},
+  "sessions": {
+    "s_0d912ef93634ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "400329b8-e4a3-4024-ba74-edde273e8a9a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    },
+    "s_2a1c3aa618434f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "96fffcb9-6a0e-4d0c-8da9-4683aeace1bc",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    },
+    "s_45cab4d7d266d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c9ace352-e3a9-4a2d-a3af-19a15ce1aab2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
