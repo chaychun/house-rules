@@ -1,0 +1,76 @@
+template/src/components/Callout.astro
+  s_18e3e12beddf7b::t_c583de8595c463 1-9
+template/src/components/Nav.astro
+  s_18e3e12beddf7b::t_d99b9a0d67d8d0 2,5-68,70-102,108
+  s_18e3e12beddf7b::t_5f8f1fed37224b 103-107
+  s_18e3e12beddf7b::t_f943d5d91412ed 109-111
+template/src/components/Steps.astro
+  s_18e3e12beddf7b::t_7f2a92c82502b7 1-5
+template/src/pages/[...slug].astro
+  s_18e3e12beddf7b::t_403616c86b21ad 17
+skills/template/SKILL.md
+  s_18e3e12beddf7b::t_1bc27f536182ec 8-9,16-17,20-41,50-66,68-74,76-77
+template/src/components/Island.tsx
+  s_18e3e12beddf7b::t_c5473ea9bd8d89 1-19
+template/package.json
+  s_18e3e12beddf7b::t_121a9d33449dfc 7,9
+  s_18e3e12beddf7b::t_acd268562ecbd4 14-17,19
+  s_18e3e12beddf7b::t_a59d9bda5b744a 13
+template/src/content/welcome.mdx
+  s_18e3e12beddf7b::t_7a80fc493cf29d 7-13,17,24,38-61
+  s_18e3e12beddf7b::t_ef9cb28a5013fa 62
+template/src/components/Figure.astro
+  s_18e3e12beddf7b::t_0bd811fb0624e8 1-8
+template/src/styles/theme.css
+  s_18e3e12beddf7b::t_aa9eadef24693d 10-11,13-23,26-30,32-36
+  s_18e3e12beddf7b::t_ffd864ec093530 53-63,66-76,81-91,94-104
+  s_18e3e12beddf7b::t_b036eb42355b6e 119
+  s_18e3e12beddf7b::t_75eb573407b058 139
+  s_18e3e12beddf7b::t_174686c546212f 217,221
+  s_18e3e12beddf7b::t_df9449788a8f85 363-366
+  s_18e3e12beddf7b::t_80b4b800147c6b 2-6,8-9,24-25,31,37-46,49-52,64-65,77-80,92-93,105,107-109,123-125,137-138,140-146,148-150,152-207,209-216,218-220,222-233,235-237,239-240,242,244-254,256-264,266-272,276-281,284-309,315-317,320,324,327-362,367-417,421-426
+  s_18e3e12beddf7b::t_238cae0ff42e1e 208
+  s_18e3e12beddf7b::t_e84e468ec4d74f 273-275,282-283
+  s_18e3e12beddf7b::t_014c3509380c42 310-314,318-319,321-323,325-326
+  s_18e3e12beddf7b::t_010e32bad69919 418-420
+  s_18e3e12beddf7b::t_9d9ecf94c49630 112,115-118,128-131,133-134
+  s_18e3e12beddf7b::t_e7c93b284f82fc 106
+template/src/components/SideNote.astro
+  s_18e3e12beddf7b::t_e659b0d59316b6 1-7
+template/tsconfig.json
+  s_18e3e12beddf7b::t_08bfcbc6e69287 4-8
+skills/init/SKILL.md
+  s_18e3e12beddf7b::t_60a5001cd85095 48-49
+  s_18e3e12beddf7b::t_faf71928bda3cd 25,32-33
+  s_18e3e12beddf7b::t_34b7a45f52a33c 26
+  s_18e3e12beddf7b::t_df4bf296f7270f 31
+template/src/layouts/Doc.astro
+  s_18e3e12beddf7b::t_2a62834968806d 56-60
+  s_18e3e12beddf7b::t_782d9ee605faa7 3,6-55,61-71,80-85,93-94,97-107,112,150-151,154-172
+  s_18e3e12beddf7b::t_5d31aa30f55018 113
+  s_18e3e12beddf7b::t_60830abcaf1d60 116-149
+  s_18e3e12beddf7b::t_98ee1222845d4c 95-96
+template/src/pages/index.astro
+  s_18e3e12beddf7b::t_a0887fd6593221 5-10
+template/astro.config.mjs
+  s_18e3e12beddf7b::t_8e15dab50da49a 3
+  s_18e3e12beddf7b::t_4aaea3fd382efb 25-26,30-35
+template/bun.lock
+  s_18e3e12beddf7b::t_5c36af0e866509 9,11-13,31-32,35-52,57-60,63-70,179-184,187-188,193-194,261-268,287-290,295-296,325-326,331-332,335-336,365-366,383-384,417-418,431-432,461-462,465-466,531-532,535-538,543-566,689-694,709-710,753-758,813-814,893-894,915-916,933-938
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "00c1c9b597658a8ad15778ecc85812cba95dc6ea",
+  "prompts": {},
+  "sessions": {
+    "s_18e3e12beddf7b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a007775d-d90d-4b6e-93be-e3792ba331b4",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
