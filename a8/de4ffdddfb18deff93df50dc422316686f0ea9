@@ -1,0 +1,19 @@
+.claude-plugin/plugin.json
+  s_80e05b61695d0d::t_91d97ca70dab12 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a8de4ffdddfb18deff93df50dc422316686f0ea9",
+  "prompts": {},
+  "sessions": {
+    "s_80e05b61695d0d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc5b1915-decb-4656-a474-18bc75d04fd5",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Chayut <chun.chayut@gmail.com>"
+    }
+  }
+}
