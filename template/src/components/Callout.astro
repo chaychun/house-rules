@@ -1,0 +1,9 @@
+---
+// Locked component. Highlighted note/warning block. Compose it, pass a label +
+// children; do not restyle. `label` defaults to "note".
+const { label = 'note' } = Astro.props;
+---
+<div class="hr-callout">
+  <div class="hr-callout__label">{label}</div>
+  <div class="hr-callout__body"><slot /></div>
+</div>

@@ -1,40 +1,148 @@
 ---
-// Navigation shell — auto-derived from the content tree. Groups docs by their
-// top-level folder (a piece), so the user can switch between docs easily.
-import { getCollection } from 'astro:content';
-
-const docs = await getCollection('docs');
-
-const groups = new Map();
-for (const entry of docs) {
-  const parts = entry.id.split('/');
-  const group = parts.length > 1 ? parts[0] : '·';
-  if (!groups.has(group)) groups.set(group, []);
-  groups.get(group).push(entry);
-}
-const sorted = [...groups.entries()].sort((a, b) => b[0].localeCompare(a[0]));
-const current = Astro.url.pathname.replace(/^\/|\/$/g, '');
+const { piece = null, pieces = [] } = Astro.props;
 ---
 
-<nav class="hr-nav">
-  <a class="hr-nav__home" href="/">house-rules docs</a>
-  {sorted.map(([group, entries]) => (
-    <div class="hr-nav__group">
-      <div class="hr-nav__group-title">{group}</div>
-      <ul>
-        {entries
-          .sort((a, b) => a.id.localeCompare(b.id))
-          .map((entry) => (
-            <li>
-              <a
-                href={`/${entry.id}`}
-                class={current === entry.id ? 'is-active' : ''}
-              >
-                {entry.data.title ?? entry.id}
-              </a>
-            </li>
-          ))}
-      </ul>
+<div class="hr-topbar">
+    <a class="hr-logo" href="/">h</a>
+    <a class="hr-crumb" href="/">house-rules</a>
+    {piece && <span class="hr-crumb-sep">/</span>}
+    {piece && <span class="hr-crumb hr-crumb--here">{piece}</span>}
+
+    <button
+        id="hr-jump"
+        class="hr-jump"
+        type="button"
+        aria-label="Jump to a doc"
+    >
+        <span class="hr-jump__glyph">⌕</span>
+        <span class="hr-jump__label">Jump to a doc</span>
+        <span class="hr-jump__key">⌘K</span>
+    </button>
+</div>
+
+<div
+    id="hr-palette"
+    class="hr-palette"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Jump to a doc"
+>
+    <div id="hr-scrim" class="hr-scrim"></div>
+    <div class="hr-palette__card">
+        <div class="hr-palette__search">
+            <span>⌕</span>
+            <input
+                id="hr-palette-input"
+                type="text"
+                placeholder="Search pieces…"
+                autocomplete="off"
+            />
+        </div>
+        <div class="hr-palette__list">
+            <div class="hr-palette__section">Pieces</div>
+            {
+                pieces.map((p) => (
+                    <a
+                        class={`hr-piece${p.active ? " is-active" : ""}`}
+                        href={p.href}
+                        data-piece={`${p.name} ${p.files.join(" ")}`.toLowerCase()}
+                    >
+                        <span class="hr-piece__l">
+                            <span class="hr-piece__chev">›</span>
+                            <span>
+                                <span class="hr-piece__name">{p.name}</span>
+                                <span class="hr-piece__meta">
+                                    {[p.dateLabel, p.files.join(", ")]
+                                        .filter(Boolean)
+                                        .join(" · ")}
+                                </span>
+                            </span>
+                        </span>
+                        <span class="hr-piece__badge">{p.count}</span>
+                    </a>
+                ))
+            }
+        </div>
+        <div class="hr-palette__foot">
+            <span>↑↓ navigate</span><span>↵ open</span><span>esc close</span>
+        </div>
     </div>
-  ))}
-</nav>
+</div>
+
+<script is:inline>
+    (function () {
+        const pal = document.getElementById("hr-palette");
+        const btn = document.getElementById("hr-jump");
+        const scrim = document.getElementById("hr-scrim");
+        const input = document.getElementById("hr-palette-input");
+        if (!pal) return;
+
+        // Plain DOM show/hide — deliberately outside any framework render so the
+        // already-highlighted code + KaTeX output on the page are never re-run.
+        const rows = () =>
+            [...pal.querySelectorAll(".hr-piece")].filter(
+                (r) => r.style.display !== "none",
+            );
+        let cursor = -1;
+
+        const paint = () => {
+            const vis = rows();
+            vis.forEach((r, i) =>
+                r.classList.toggle("is-cursor", i === cursor),
+            );
+        };
+        const open = () => {
+            pal.setAttribute("data-open", "");
+            cursor = -1;
+            paint();
+            if (input) {
+                input.value = "";
+                filter();
+                input.focus();
+            }
+        };
+        const close = () => pal.removeAttribute("data-open");
+        const isOpen = () => pal.hasAttribute("data-open");
+
+        const filter = () => {
+            const q = ((input && input.value) || "").toLowerCase();
+            pal.querySelectorAll(".hr-piece").forEach((r) => {
+                r.style.display = r.getAttribute("data-piece").includes(q)
+                    ? ""
+                    : "none";
+            });
+            cursor = -1;
+            paint();
+        };
+
+        btn && btn.addEventListener("click", open);
+        scrim && scrim.addEventListener("click", close);
+        input && input.addEventListener("input", filter);
+
+        document.addEventListener("keydown", (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+                e.preventDefault();
+                isOpen() ? close() : open();
+                return;
+            }
+            if (!isOpen()) return;
+            if (e.key === "Escape") {
+                close();
+                return;
+            }
+            const vis = rows();
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                cursor = Math.min(cursor + 1, vis.length - 1);
+                paint();
+            } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                cursor = Math.max(cursor - 1, 0);
+                paint();
+            } else if (e.key === "Enter") {
+                const target = vis[cursor] || vis[0];
+                if (target) window.location.href = target.getAttribute("href");
+            }
+        });
+    })();
+</script>

@@ -1,20 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Doc from '../layouts/Doc.astro';
-
-const docs = (await getCollection('docs')).sort((a, b) =>
-  a.id.localeCompare(b.id),
-);
 ---
 
-<Doc title="house-rules docs" status="index">
-  <p>Every spec, plan, and exploration for this repo lives here.</p>
-  <ul>
-    {docs.map((entry) => (
-      <li>
-        <a href={`/${entry.id}`}>{entry.data.title ?? entry.id}</a>
-        {entry.data.status && <span class="hr-badge">{entry.data.status}</span>}
-      </li>
-    ))}
-  </ul>
+<Doc title="house-rules docs">
+  <p>
+    Every spec, plan, context, and exploration for this repo lives here. Press
+    <code>⌘K</code> (or click <strong>Jump to a doc</strong>, top right) to browse
+    by piece.
+  </p>
 </Doc>

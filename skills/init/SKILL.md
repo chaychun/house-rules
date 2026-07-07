@@ -22,18 +22,15 @@ Apply zero-ambiguity: never assume an answer, ask. Stay terse (persona).
 
 ## Template stack
 
-Infer, then confirm:
-- Repo already uses React → React is available.
-- Else default to Astro + vanilla JS; escalate to React only for complex state
-  or a react-specific need (e.g. Motion).
-
-Confirm regardless of what you infer.
+Astro + React baseline. React and `motion` are preinstalled (the `Island`
+component needs them).
 
 ## Build the template
 
 Invoke `template` (build mode): copy the bundled Astro scaffold into the folder,
-`npm install`, adapt `theme.css` to the repo's styling. Always gitignore
-`dist/` and `node_modules/` (independent of folderPolicy, which governs source).
+`npm install` or whatever the project package manager is. **Do not** adapt `theme.css` — the house style is frozen and
+ships as-is. Always gitignore `dist/` and `node_modules/` (independent of
+folderPolicy, which governs source).
 
 ## Optional
 
@@ -48,7 +45,8 @@ skills terse).
 {
   "folder": ".house-rules/",
   "folderPolicy": "commit",
-  "workCommit": "ask"
+  "workCommit": "ask",
+  "docsPort": 8111
 }
 ```
 

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { visit } from 'unist-util-visit';
@@ -21,10 +22,16 @@ function remarkMermaid() {
 }
 
 export default defineConfig({
-  integrations: [mdx()],
+  // React is baseline (for the Island component); mdx renders the docs.
+  integrations: [react(), mdx()],
   markdown: {
     remarkPlugins: [remarkMath, remarkMermaid],
     rehypePlugins: [rehypeKatex],
-    shikiConfig: { theme: 'github-dark', wrap: true },
+    // Dual theme: light is the frozen default, dark is emitted as CSS vars
+    // (--shiki-dark) and swapped in by theme.css under the dark selectors.
+    shikiConfig: {
+      themes: { light: 'github-light', dark: 'github-dark' },
+      wrap: true,
+    },
   },
 });
