@@ -1,4 +1,0 @@
-# build output + deps are never committed (folderPolicy governs source only)
-dist/
-node_modules/
-.astro/

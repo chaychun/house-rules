@@ -1,6 +1,6 @@
 {
   "name": "house-rules",
-  "description": "A lean brainstorm-plan-build loop for Claude Code, with a bundled terse persona and human-facing HTML docs.",
+  "description": "A lean design-build loop for Claude Code — session routing, harness-native docs on demand, and a bundled terse persona.",
   "owner": {
     "name": "Chayut"
   },
@@ -8,7 +8,7 @@
     {
       "name": "house-rules",
       "source": "./",
-      "description": "A lean brainstorm-plan-build loop for Claude Code, with a bundled terse persona and human-facing HTML docs."
+      "description": "A lean design-build loop for Claude Code — session routing, harness-native docs on demand, and a bundled terse persona."
     }
   ]
 }
