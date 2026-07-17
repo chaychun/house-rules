@@ -1,8 +1,0 @@
----
-// Locked component. Captioned figure/image. Pass `src`, `alt`, `caption`.
-const { src, alt = '', caption } = Astro.props;
----
-<figure class="hr-figure">
-  <img src={src} alt={alt} />
-  {caption && <figcaption>{caption}</figcaption>}
-</figure>
