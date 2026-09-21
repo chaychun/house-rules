@@ -1,60 +1,107 @@
 # House Rules
 
-An opinionated, lean **design → build** loop for Claude Code. This plugin is born from some of my personal philosophy for working with coding agents and generative AI:
-- **You say in control, every step of the way**. No parallel agents. No autonomous end-to-end driver. You own all the designs and decisions, with full knowledge of everything being built. Prefer controlled iteration over agentic autonomy.
-- **Agents can do the work right, make them do the right work**. Zero ambiguity. Never infer unstated intent; verify against real code; ask. Absolute clarity on every edge before touching code.
-- **Rigidity is expensive and time-consuming**. With the user at the helm, agents can afford to be more flexible. No hard rules, strict end-to-end flows. Everything adapts to the problem.
-- **Readability is key to understanding**. Docs use whatever your harness supports (canvas, artifacts, HTML, markdown). Pseudo-code over exact snippets.
+Six standalone skills for a human-directed **design → build → verify** loop.
+Install through the Codex or Claude Code marketplace, or copy the skills into
+another agent. The plugin packages skills only: no session hooks, persona,
+MCP servers, or global instruction changes.
 
-## Main Features
-- **A guided design → build loop**. Four small skills (`hr-design`, `hr-explore`, `hr-implement`, `hr-debug`) that hand off to each other. You invoke each step deliberately — nothing runs end-to-end on its own. A session bootstrap hook routes most open-ended work through design; precise execution skips straight to implement.
-- **Zero-ambiguity by design**. Skills shape intent before code, asking before they assume. Intent is verified against real code, not inferred.
-- **Harness-native docs on demand**. When you want a write-up, you pick format and location at that moment. Agent use native tools to write readable (and potentially interactive) docs when needed, or fallback to plain old markdown. 
-- **Customizable persona**. Terse wording built-in, customize to your preferences.
+You own the designs and decisions. Skills adapt to the problem, verify against
+real code, and ask before assuming. Nothing runs end-to-end on its own.
 
-
-## The loop
-
-```
-design → (explore?) → implement ⇄ debug → you integrate
-```
+## Skills
 
 | Skill | When |
 | --- | --- |
-| `hr-design` | most build/change work; shape intent before code |
-| `hr-explore` | mock visual/UX unknowns in the real codebase |
-| `hr-implement` | agreed design or precise execution |
-| `hr-debug` | a bug, failure, or unexpected behavior |
+| `hr-design` | Shape intent before open-ended build/change work |
+| `hr-explore` | Compare visual/UX directions in the real codebase |
+| `hr-implement` | Build an agreed design or execute a precise change |
+| `hr-debug` | Diagnose a bug, failure, or unexpected behavior |
+| `hr-verify-behavior` | Compare implementation with human-confirmed behavior |
+| `hr-test-guide` | Guide a human through proportional manual testing |
 
 ## Install
 
-```bash
+Codex and Claude Code marketplace installs are the primary paths. Both use the
+same six skills from this repository.
+
+### Codex CLI
+
+Register the marketplace from your terminal:
+
+```sh
+codex plugin marketplace add chaychun/house-rules
+codex plugin add house-rules@house-rules
+```
+
+Alternatively, after registering the marketplace, enter `/plugins` in Codex
+and install **house-rules** from the **house-rules** marketplace. Start a new
+session after installation. Use a current Codex CLI with plugin support.
+
+### Claude Code
+
+Run inside Claude Code:
+
+```text
 /plugin marketplace add chaychun/house-rules
 /plugin install house-rules@house-rules
 ```
 
+### Other agents — manual
+
+Clone or download this repository and copy the six `skills/hr-*` directories,
+including their `reference/` subdirectories, into the agent's documented skills
+folder.
+
+### Updating or migrating
+
+Use your host's plugin manager to update a marketplace installation. If moving
+from a manual install, first install the plugin, then back up and move the
+manual House Rules copies out of folders that the same agent scans, such as
+`~/.agents/skills`, `~/.codex/skills`, or `~/.claude/skills`. Keep one
+installation per agent; leave unrelated skills alone.
+
+The former `verify-behavior` and `test-guide` skills are now named
+`hr-verify-behavior` and `hr-test-guide`. Retire the old names after installing
+the replacements.
+
+The Claude plugin keeps its existing `house-rules@house-rules` identity.
+Version 0.4.0 replaces the old routing/persona package with skills only; update
+the plugin and start a new session to stop loading the old hook.
+
 ## Usage
 
-Just use Claude Code like normal. A bootstrap hook injected every session routes each request; skills auto-activate when the work fits. Docs are optional and user-directed — ask format and location when you want something written down.
+Restart your agent or start a new session after installation. Ask for a skill
+by name, or let the agent select it from its description. Invocation syntax and
+automatic discovery depend on the host.
 
-The persona is active by default, injected into every session. To opt out of the persona for the session, say something like `stop persona` / `normal mode`.
+Skills are independent: use design, exploration, implementation, debugging,
+behavioral verification, or manual testing when needed. No session hook
+automatically routes requests, and no persona changes your agent's voice.
 
 ## Structure
 
+```text
+plugin.json                       # Portable Agent Plugins manifest
+.agents/plugins/marketplace.json  # Codex marketplace catalog
+.claude-plugin/plugin.json        # Claude compatibility manifest
+.claude-plugin/marketplace.json   # Claude marketplace catalog
+skills/hr-*/SKILL.md               # Shared skill definitions
+skills/hr-*/reference/             # Supporting guidance, where needed
 ```
-.claude-plugin/plugin.json        # name + SessionStart hook
-.claude-plugin/marketplace.json   # catalog: this repo as its own plugin
-hooks/session-start          # injects bootstrap (loop map + persona)
-hooks/bootstrap.md           # the injected loop map + skill guidance
-persona.md                   # the terse persona (source of truth)
-skills/hr-*/SKILL.md        # design, explore, implement, debug
-```
+
+The portable [Agent Plugins](https://agent-plugins.org/) package discovers
+skills in `skills/`. The marketplace catalogs point at the repository root,
+not separate copies. Claude's compatibility manifest mirrors the portable
+package identity and version; keep them in sync when releasing.
+
+For local development, register this checkout instead of the GitHub source:
+`codex plugin marketplace add /absolute/path/to/house-rules` or
+`/plugin marketplace add /absolute/path/to/house-rules` in Claude Code. Then
+install `house-rules@house-rules` through the corresponding plugin manager.
 
 ## Credits
 
-Built on two prior works:
-
-- **[superpowers](https://github.com/obra/superpowers)** by Jesse Vincent (obra) — the brainstorm → plan → build loop, trimmed and adapted into the skills here.
-- **[caveman](https://github.com/JuliusBrussee/caveman)** by Julius Brussee — the terse persona is adapted from caveman ultra.
+Built on **[superpowers](https://github.com/obra/superpowers)** by Jesse Vincent
+(obra) — the brainstorm → plan → build loop, trimmed and adapted here.
 
 MIT licensed.

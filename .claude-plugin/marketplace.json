@@ -1,6 +1,6 @@
 {
   "name": "house-rules",
-  "description": "A lean design-build loop for Claude Code — session routing, harness-native docs on demand, and a bundled terse persona.",
+  "description": "Skills for a human-directed design, build, and verify workflow.",
   "owner": {
     "name": "Chayut"
   },
@@ -8,7 +8,7 @@
     {
       "name": "house-rules",
       "source": "./",
-      "description": "A lean design-build loop for Claude Code — session routing, harness-native docs on demand, and a bundled terse persona."
+      "description": "Six human-directed skills for design, exploration, implementation, debugging, behavioral verification, and manual testing."
     }
   ]
 }

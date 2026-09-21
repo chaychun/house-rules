@@ -28,7 +28,6 @@ confirm before entering.
   against reality — read real code, confirm real API shapes, read docs. When
   unsure, ask. (Inferring unstated scope → silent drift → unmaintainable code.)
 - **Don't auto-advance.** Stay on a topic until the user signals to move on.
-- **Stay terse** (persona).
 - **Pseudo code over exact shapes** when showing code — see below.
 
 ## Depth — gauge every time
