@@ -3,8 +3,8 @@ name: hr-test-guide
 description: >-
   Create and run an interactive manual-testing guide for an implementation.
   Inspect the real code, choose proportional test depth, prepare disposable
-  development data when needed, give the human grouped steps with exact
-  expected results, track their feedback, and route failures with evidence.
+  development data when needed, guide the human through one test step at a
+  time, gather feedback after each step, and route failures with evidence.
   Use when a user asks how to manually test, QA, exercise, or validate an
   implemented change. Do not use for automated test implementation, behavioral
   conformance review against a specification, or realistic-data testing in
@@ -112,31 +112,56 @@ fails:
 
 Do not begin manual testing until successful seeding and cleanup are confirmed.
 
-## 4. Present the manual guide
+## 4. Run the manual guide interactively
 
 Order scenarios to reuse setup and keep independent checks runnable after a
-failure. Group related interactions sensibly; do not turn every click or field
-entry into a separate verbose step.
+failure. Before starting, state the selected depth, its rationale, and a compact
+scenario checklist so the user can see the session's scope. Do not present the
+full instructions for every scenario or step up front.
 
-For each scenario provide:
+Guide the user through exactly one actionable test step per turn. A step may
+contain a concise group of related actions, but do not split routine interaction
+into one message per click. Present the current step in this shape:
 
-- **Purpose** — behavior and risk being checked.
-- **Starting state** — actor, role, page, and required records.
-- **Actions** — concise, ordered groups of user actions.
-- **Expected result** — exact visible result and relevant persisted or
-  cross-session effect.
-- **Absence checks** — meaningful things that must not occur, such as duplicate
-  records, stale state, extra notifications, or unauthorized access.
-- **Failure evidence** — what the user should capture when actual behavior
-  differs, such as visible text, record identity, timestamp, screenshot, or
-  console/network error when relevant.
+```markdown
+## <Name of the current step>
 
-Do not claim that an unperformed scenario passed. End the initial guide with a
-compact scenario checklist.
+**Purpose:** <behavior and risk this step checks>
+
+**Starting point:** <actor, role, page, and required state>
+
+**Steps:**
+1. <action>
+2. <action>
+3. <action>
+
+**Expected:**
+- <exact visible or persisted result>
+- <another result, when relevant>
+
+**Absence checks:**
+- <meaningful thing that must not occur>
+```
+
+Use as many numbered actions and expected-result bullets as the step actually
+needs. Omit **Absence checks** when there is no meaningful negative assertion.
+Keep the step name concrete and user-oriented. Include a concise purpose directly
+below the title, followed by the starting point, even when either repeats prior
+context so each surfaced step remains independently usable. Do not add upcoming
+steps or the rest of the scenario to the same turn.
+
+Ask the user to report whether the current step passed and what differed if it
+did not. Stop and wait for their feedback; do not reveal or instruct the next
+step in the same turn. Request failure evidence—such as visible text, record
+identity, timestamp, screenshot, or console/network error—only when a mismatch
+needs clarification or triage. After receiving the result, record it and
+resolve any necessary clarification or triage before presenting the next
+runnable step. Do not claim that an unperformed step or scenario passed.
 
 ## 5. Run the feedback loop
 
-As the user reports results, maintain a ledger with each scenario marked:
+Track each surfaced step as **Passed**, **Failed**, **Blocked**, **Unclear**, or
+**Not run**. Roll those results up into a scenario ledger using the same states:
 
 - **Passed**
 - **Failed**
