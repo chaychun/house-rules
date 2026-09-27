@@ -8,7 +8,7 @@
     {
       "name": "house-rules",
       "source": "./",
-      "description": "Six human-directed skills for design, exploration, implementation, debugging, behavioral verification, and manual testing."
+      "description": "Nine skills for main-thread feature development, delegated work, review, and human testing."
     }
   ]
 }
