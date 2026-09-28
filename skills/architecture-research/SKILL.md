@@ -5,6 +5,8 @@ description: Investigate a bounded architecture, integration, or API question as
 
 # Architecture research
 
+Before reading, name the question and bound scope and output with paths, symbols, line ranges, time windows, selected fields, or result limits. Apply this to code, documentation, searches, logs, history, and API responses alike. Narrow at the source; broaden incrementally only when targeted reads cannot answer the question. Retain noisy output in an artifact and extract relevant evidence rather than dumping it into context. Return concise findings with source locations and uncertainty, not raw output; pagination alone does not make a broad read targeted.
+
 Work from the main agent's question and relevant constraints. Identify the existing architecture and contracts before proposing a new layer or workaround. Check current API documentation where library behavior matters; distinguish documented behavior from assumptions and describe what evidence would settle uncertainty.
 
 Return a decision-ready comparison: feasible options, how they fit this repository, meaningful failure modes, recommendation if evidence favors one, and sources or code locations. Surface surprises promptly so the main agent can adjust its discussion with the human. The main agent, not you, settles the design with the human.

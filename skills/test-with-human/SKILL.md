@@ -5,6 +5,8 @@ description: Run an interactive development manual test session in the main thre
 
 # Test with human
 
+Keep evidence reads in the main thread small and bounded: request the relevant error, time window, paths, fields, or result count, not whole logs, histories, transcripts, or datasets. Delegate large or unbounded inspection to a small research/scout subagent and require targeted reads and a concise cited report. Retain noisy output in an artifact for focused extraction rather than printing it all; preserve complete relevant diagnostics. This keeps the human-facing context clear without losing evidence.
+
 The main agent owns this conversation. This guide is for development feature testing, not realistic-data testing in beta, preview, or production; do not use its seed workflow for those environments. Identify the affected behavior, existing automated evidence, required roles, device or external dependencies, and repository-specific development and data rules. Choose light, standard, or deep coverage based on impact, statefulness, reversibility, and existing confidence; avoid exhaustive theoretical edge cases. Give the human a short scenario overview, not all instructions at once.
 
 ## Prepare safely

@@ -5,6 +5,8 @@ description: Check an implementation against behavior actually confirmed by the 
 
 # Review behavior
 
+Search for the specific agreement and affected paths before reading bounded excerpts; do not dump prior conversations, whole diffs, logs, or issue/PR history. Bound scope and output for every source, including documentation and API responses. Main agents must delegate large or unbounded inspection to a small research/scout subagent; review subagents broaden incrementally only when targeted reads cannot answer the question. Return concise cited findings, not raw output, to preserve the main context and avoid duplicate bulk-reading costs.
+
 Obtain the implementation scope and the confirmed behavior from the main thread, an accessible prior conversation, or an explicitly identified source. Do not promote an agent's suggestion, draft, test title, or later implementation choice into a human-approved requirement. Ask the main agent when a decision or scope is genuinely unavailable.
 
 Trace primary flows and consequential constraints through production code. Compare both directions: what was agreed versus what exists, and observable changes without an agreed basis. Inspect affected boundaries and focused checks where they add evidence, but do not infer runtime success from static inspection or a mocked test. Keep the review proportional: prioritize likely, high-impact, or explicitly agreed cases over contrived edges or unrelated pre-existing issues.

@@ -5,6 +5,8 @@ description: Inspect implementation choices for consequential shortcuts, loophol
 
 # Review approach
 
+Locate changed files and consequential symbols first, then read bounded diffs and excerpts; constrain logs, history, documentation, searches, and API responses by scope and output too. Main agents must delegate large or unbounded inspection to a small research/scout subagent rather than ingesting it themselves. Review subagents broaden incrementally only when targeted reads cannot answer the question. Return concise cited findings, not raw dumps; verify disputed claims with focused excerpts rather than reloading the entire source.
+
 Read the agreed direction and the changed code, then follow consequential paths far enough to understand why each choice was made. Check whether the implementation bypasses a documented capability, duplicates a framework or platform contract, relies on fragile timing or mocks, or creates hidden costs that a more established path would avoid. Verify alternatives against current documentation and this repository rather than invoking vague "best practices."
 
 For each actionable finding, explain the concrete code path, failure mode or maintenance cost, likelihood and impact, and an applicable better path. Distinguish an agreed intentional tradeoff from an unauthorized shortcut. Do not demand abstraction, refactoring, or hardening merely because a solution is custom or unfamiliar. If the choice depends on an unresolved product decision, ask the main agent rather than treating your preference as the contract.
